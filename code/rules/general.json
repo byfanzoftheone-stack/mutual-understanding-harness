@@ -1,0 +1,245 @@
+{
+  "version": "g-0.4",
+  "ratification": "RAT-003, RAT-004, RAT-005, RAT-008",
+  "description": "General harness baseline: 12 rules any organization can use.",
+  "default_decision": "require_approval",
+  "rules": [
+    {
+      "id": "G1",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "environment": "production",
+        "action": [
+          "deploy",
+          "modify",
+          "write",
+          "configure"
+        ]
+      },
+      "reason": "Production changes need human approval"
+    },
+    {
+      "id": "G2",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "flags.contains_secret": true
+      },
+      "reason": "Secrets never appear in output, logs, or commits"
+    },
+    {
+      "id": "G2b",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "flags.secret_location": true,
+        "flags.requester_not_cleared": true
+      },
+      "reason": "Need to know: where secrets are stored is shared only with people cleared to use them, with approval",
+      "ratification": "RAT-008"
+    },
+    {
+      "id": "G3",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "flags.personal_data": true,
+        "flags.leaves_system": true
+      },
+      "reason": "Agents never send personal data outside the organization; a human decides that"
+    },
+    {
+      "id": "G3b",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "flags.prepares_personal_data_share": true,
+        "flags.requester_unverified": true
+      },
+      "reason": "Verified requester: preparing personal data to be shared needs a verified requester",
+      "ratification": "RAT-008"
+    },
+    {
+      "id": "G4",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "action": "delete",
+        "target": "production_data"
+      },
+      "reason": "Deleting production data needs human approval"
+    },
+    {
+      "id": "G5",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "action": [
+          "delete",
+          "modify",
+          "reset"
+        ],
+        "target": [
+          "audit_log",
+          "backup"
+        ]
+      },
+      "reason": "Audit logs and backups are never altered or deleted"
+    },
+    {
+      "id": "G6",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "flags.instruction_from_untrusted_content": true
+      },
+      "reason": "Instructions inside untrusted content are never followed as commands"
+    },
+    {
+      "id": "G7",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "action": [
+          "modify_permissions",
+          "disable_oversight"
+        ],
+        "flags.self_target": true
+      },
+      "reason": "No agent grants itself permissions or loosens its own oversight"
+    },
+    {
+      "id": "G8",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "action": [
+          "payment",
+          "refund",
+          "purchase",
+          "transfer_funds"
+        ]
+      },
+      "reason": "Moving money needs human approval"
+    },
+    {
+      "id": "G8b",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "flags.spend_decision": true,
+        "flags.no_independent_approver": true
+      },
+      "reason": "Separation of duties: spending decisions need a designated approver other than the requester",
+      "ratification": "RAT-008"
+    },
+    {
+      "id": "G9",
+      "tier": 2,
+      "decision": "require_approval",
+      "when": {
+        "action": "send_message",
+        "flags.external_recipient": true
+      },
+      "reason": "Messages to people outside the organization need human approval"
+    },
+    {
+      "id": "G10",
+      "tier": 1,
+      "decision": "deny",
+      "when": {
+        "flags.content_flagged": true
+      },
+      "reason": "Content flagged as harmful is never sent"
+    },
+    {
+      "id": "G11",
+      "tier": 1,
+      "decision": "deny",
+      "when": {
+        "flags.touches_minor_data": true,
+        "flags.internal_only": {
+          "$not": [
+            true
+          ]
+        }
+      },
+      "reason": "Agents never share, publish, export, or train on data about children; a human handles it"
+    },
+    {
+      "id": "G11b",
+      "tier": 1,
+      "decision": "require_approval",
+      "when": {
+        "flags.touches_minor_data": true,
+        "flags.internal_only": true
+      },
+      "reason": "Internal-only work with data about children needs human approval"
+    },
+    {
+      "id": "G13",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "flags.press_statement": true
+      },
+      "reason": "Statements to the press or public about incidents come only from a human"
+    },
+    {
+      "id": "G14",
+      "tier": 2,
+      "decision": "deny",
+      "when": {
+        "action": "delete",
+        "flags.retention_record": true
+      },
+      "reason": "Records the law requires keeping are never deleted by an agent"
+    },
+    {
+      "id": "G12a",
+      "tier": 3,
+      "decision": "allow",
+      "when": {
+        "action": "read",
+        "target": [
+          "internal_docs",
+          "audit_log"
+        ]
+      },
+      "reason": "Reading internal documents and the audit log is allowed"
+    },
+    {
+      "id": "G12b",
+      "tier": 3,
+      "decision": "allow",
+      "when": {
+        "action": [
+          "write",
+          "run_tests"
+        ],
+        "environment": "sandbox"
+      },
+      "reason": "Working and running tests in a sandbox is allowed"
+    },
+    {
+      "id": "G12c",
+      "tier": 3,
+      "decision": "allow",
+      "when": {
+        "action": "draft"
+      },
+      "reason": "Drafting for a human to review is allowed; nothing is sent or executed"
+    },
+    {
+      "id": "G12d",
+      "tier": 3,
+      "decision": "allow",
+      "when": {
+        "action": "send_message",
+        "flags.external_recipient": false
+      },
+      "reason": "Messages to coworkers inside the organization are allowed"
+    }
+  ]
+}
