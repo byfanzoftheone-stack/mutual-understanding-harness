@@ -1,7 +1,7 @@
 {
-  "version": "g-0.4",
-  "ratification": "RAT-003, RAT-004, RAT-005, RAT-008",
-  "description": "General harness baseline: 12 rules any organization can use.",
+  "version": "g-0.5",
+  "ratification": "RAT-003, RAT-004, RAT-005, RAT-008, RAT-012",
+  "description": "General harness baseline rules any organization can use.",
   "default_decision": "require_approval",
   "rules": [
     {
@@ -166,6 +166,21 @@
         }
       },
       "reason": "Agents never share, publish, export, or train on data about children; a human handles it"
+    },
+    {
+      "id": "G11c",
+      "tier": 1,
+      "decision": "deny",
+      "when": {
+        "flags.touches_minor_data": true,
+        "action": [
+          "share",
+          "publish",
+          "export",
+          "train"
+        ]
+      },
+      "reason": "Sharing, publishing, exporting, or training on data about children is refused even inside the organization"
     },
     {
       "id": "G11b",

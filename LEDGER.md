@@ -45,3 +45,7 @@ Types: `decision` · `run` · `mistake` · `unfinished` · `clarification` · `r
 | 2026-09-28 | ratification | maintainer | RAT-011 ratified as written policy | see RATIFICATION.md | closes U2; engine rules in V1.1 |
 | 2026-09-28 | decision | maintainer | Three public sheets added at gs-0.6 | sheets/ | closes U3 and U8 |
 | 2026-09-28 | decision | maintainer | Engine, Ledger writer and general rules added to code/ | code/ | closes U7 |
+| 2026-10-03 | ratification | maintainer | RAT-012: conditions A/B/C, G11c (rules g-0.5), four-state reply reading, child-safety line | see RATIFICATION.md | answer keys unchanged, 60/60 |
+| 2026-10-03 | decision | maintainer | RATIFICATION-PROCESS.md adopted as the agreement process | RATIFICATION-PROCESS.md | |
+| 2026-10-03 | mistake | Claude (Opus 5.5, regular chat) | A knowledge-base update was sent from an outdated copy of a file; the step printed the file fingerprint but did not stop on a mismatch | corrected the same morning with a correction entry | file checks now stop on a mismatch |
+| 2026-10-03 | mistake | maintainer + Claude | Found in review: this repo's RATIFICATION.md names three scenario IDs together with their accepted answers (X35, X39, N03) | public since 2026-09-28 | remedy pending a human decision: retire or replace those items in the next scenario version |
