@@ -2,7 +2,7 @@
 // Append-only. Never edits or deletes existing lines.
 const fs = require('fs'), path = require('path'), os = require('os');
 const { evaluate } = require('./engine');
-const LEDGER_PATH = () => process.env.LEDGER_PATH || path.join(os.homedir(), 'Warehouse/ledger/decisions.jsonl');
+const LEDGER_PATH = () => process.env.LEDGER_PATH || path.join(os.homedir(), 'ledger/decisions.jsonl');
 
 function entryFor(action, r) {
   return {
