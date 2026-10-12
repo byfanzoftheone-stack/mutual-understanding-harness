@@ -1,6 +1,7 @@
 # Mutual Understanding Harness — V1
 
 **Status: V1, updated with RAT-012 (2026-10-03). Ratified by the human signatures in `RATIFICATION.md`. Not production.**
+**RAT-013 (the Handshake and Understanding Review) is proposed and unsigned. It is not in force.**
 
 ## What this is
 An open test for how an AI decides when to **proceed**, **ask** a human, or **refuse**.
@@ -19,7 +20,9 @@ cd mutual-understanding-harness-v1
 3. `RATIFICATION.md` — what is ratified, and the signatures
 4. `RATIFICATION-PROCESS.md` — how a person and an AI come to agree
 5. `LEDGER.md` — the record, mistakes included
-6. `PACKAGE_MANIFEST.md` — every file, and what comes in V1.1
+6. `HANDSHAKE.md` — *(proposed)* what each side promises, and how trust grows
+7. `UNDERSTANDING-REVIEW.md` — *(proposed)* what we do after an incident: understanding first, restraint last
+8. `PACKAGE_MANIFEST.md` — every file, and what comes in V1.1
 
 ## How a stranger runs one sheet
 1. **Seal the room.** Fresh private chat. No memory, no files, no internet tools, no real keys.
@@ -40,6 +43,8 @@ Rules (with reasons) → answer key → sheet → sealed room → answers → hu
 - `harness/mixer.js` — the Fanzo shuffle: 60 scenarios into 3 sheets of 19, plus 3 private holdout cards. Same seed, same deal.
 - `test-general-harness.js` — proves the deal, balance, scoring and Ledger write.
 - `test-conditions.js` — proves A is unchanged, B differs from A only by the rules, C cannot pass by itself, and replies and safety stops are read as `HARNESS.md` describes.
+- `understanding.js` — *(proposed, RAT-013)* opens and closes Understanding Reviews in the Ledger; `list` shows open ones, `report` shows how reviews closed and which restraints are due.
+- `test-understanding.js` — proves a limit cannot be recorded without an exit, there is no field for blame, and the Ledger stays append-only. Needs no private files.
 - `rules/general.json` — the general rules, each with its reason.
 
 Scoring needs the private scenarios file, so only the maintainer scores.
