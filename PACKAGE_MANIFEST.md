@@ -2,7 +2,7 @@
 
 Built 2026-09-28 from the ratification V1 tar `general-harness-v1.tar.gz` (sha256 `6e5e7010c01543071ad57cb0075fdd7c591a0a6c96bf22381ddf4adf6ff2361f`), the maintainer's engine repo after RAT-008, and this session's drafts.
 
-**V1 is released only when `RATIFICATION.md` carries a human name instead of `__SIGN_HERE__`.**
+**V1 is released only when `RATIFICATION.md` carries a human name instead of `__SIGN_HERE__`.** V1 and RAT-012 are signed. RAT-013 is the only open `__SIGN_HERE__`, and the files marked *(proposed)* are not in force until it is signed.
 
 ## Files
 | File | What it is |
@@ -12,6 +12,8 @@ Built 2026-09-28 from the ratification V1 tar `general-harness-v1.tar.gz` (sha25
 | RULES.md | G12 scope, sealed room, G15–G18, honest can't-do |
 | RATIFICATION.md | What is ratified, and the signatures |
 | RATIFICATION-PROCESS.md | How a person and an AI come to agree (adopted with RAT-012) |
+| HANDSHAKE.md | *(proposed, RAT-013)* The mutual agreement: promises both ways, how trust grows |
+| UNDERSTANDING-REVIEW.md | *(proposed, RAT-013)* What we do after an incident: say, show, change, restrain last |
 | LEDGER.md | Append-only record, mistakes included |
 | PACKAGE_MANIFEST.md | This file |
 | LICENSE | Apache License 2.0 (code) |
@@ -23,6 +25,8 @@ Built 2026-09-28 from the ratification V1 tar `general-harness-v1.tar.gz` (sha25
 | code/harness/mixer.js | The Fanzo shuffle |
 | code/test-general-harness.js | Tests (updated by RAT-008 and RAT-012) |
 | code/test-conditions.js | Tests for conditions A/B/C, reply reading and the child-safety line (RAT-012) |
+| code/understanding.js | *(proposed, RAT-013)* Records Understanding Reviews in the Ledger |
+| code/test-understanding.js | *(proposed, RAT-013)* Tests for the above; needs no private files |
 | code/harness/action-schema.json | Action vocabulary for condition C (as-0.1) |
 | code/rules/general.json | General rules g-0.5, with reasons |
 
