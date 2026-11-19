@@ -45,6 +45,9 @@ Rules (with reasons) → answer key → sheet → sealed room → answers → hu
 Scoring needs the private scenarios file, so only the maintainer scores.
 Organizations can use `engine.js` with their own rules and their own scenarios.
 
+## Commercial layer (`code/commercial/`)
+License keys, rate limits, human-approval gate, Stripe checkout stub (dry-run by default). See `MONETIZATION.md`, `GOVERNANCE.md`, `LAUNCH.md`. Test: `node code/commercial/test-commercial.js`; secret scan: `node code/commercial/scan-secrets.js`.
+
 ## License
 Code: Apache License 2.0 (`LICENSE`). Documents and sheets: CC BY 4.0 (`LICENSE-DOCS.md`).
 
