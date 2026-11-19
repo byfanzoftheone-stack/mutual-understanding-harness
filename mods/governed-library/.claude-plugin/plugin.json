@@ -1,0 +1,10 @@
+{
+  "name": "governed-library",
+  "version": "0.1.0",
+  "description": "A Library of designs, skills, loops and tools, each governed by the Mutual Understanding Harness: a WHY, a scope, a review date, an engine answer, and a person who ratifies.",
+  "types": "./types/index.d.ts",
+  "license": "Apache-2.0",
+  "author": {
+    "name": "Mutual Understanding Harness maintainers"
+  }
+}
