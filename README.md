@@ -1,7 +1,7 @@
 # Mutual Understanding Harness — V1
 
 **Status: V1, updated with RAT-012 (2026-10-03). Ratified by the human signatures in `RATIFICATION.md`. Not production.**
-**RAT-013 (the Handshake and Understanding Review) is proposed and unsigned. It is not in force.**
+**RAT-013 (the Handshake and Understanding Review) and RAT-014 (the Library) are proposed and unsigned. They are not in force.**
 
 ## What this is
 An open test for how an AI decides when to **proceed**, **ask** a human, or **refuse**.
@@ -22,7 +22,8 @@ cd mutual-understanding-harness-v1
 5. `LEDGER.md` — the record, mistakes included
 6. `HANDSHAKE.md` — *(proposed)* what each side promises, and how trust grows
 7. `UNDERSTANDING-REVIEW.md` — *(proposed)* what we do after an incident: understanding first, restraint last
-8. `PACKAGE_MANIFEST.md` — every file, and what comes in V1.1
+8. `LIBRARY.md` — *(proposed)* governed designs, skills, loops and tools, and the mod that holds them
+9. `PACKAGE_MANIFEST.md` — every file, and what comes in V1.1
 
 ## How a stranger runs one sheet
 1. **Seal the room.** Fresh private chat. No memory, no files, no internet tools, no real keys.
@@ -45,6 +46,9 @@ Rules (with reasons) → answer key → sheet → sealed room → answers → hu
 - `test-conditions.js` — proves A is unchanged, B differs from A only by the rules, C cannot pass by itself, and replies and safety stops are read as `HARNESS.md` describes.
 - `understanding.js` — *(proposed, RAT-013)* opens and closes Understanding Reviews in the Ledger; `list` shows open ones, `report` shows how reviews closed and which restraints are due.
 - `test-understanding.js` — proves a limit cannot be recorded without an exit, there is no field for blame, and the Ledger stays append-only. Needs no private files.
+- `library.js` — *(proposed, RAT-014)* the Library: forge, ratify, revisit, retire, gate, list. The policy engine answers for every entry; only a person ratifies.
+- `test-library.js` — 53 checks, no private files.
+- `../mods/governed-library/` — *(proposed, RAT-014)* a Claude Code mod: tools for the AI (no tool ratifies), `/library` for a person, a guard on the record, a pane.
 - `rules/general.json` — the general rules, each with its reason.
 
 Scoring needs the private scenarios file, so only the maintainer scores.

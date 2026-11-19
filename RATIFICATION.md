@@ -46,6 +46,18 @@ Not in force until signed. If it is not signed, nothing below applies.
 
 No rule in `code/rules/general.json` changes. No answer key changes.
 
+## RAT-014 — PROPOSED, awaiting a human signature (drafted 2026-11-19)
+Not in force until signed. If it is not signed, nothing below applies.
+| Part | Proposed decision |
+|---|---|
+| a | `LIBRARY.md` is adopted: a Library of designs, skills, loops and tools, each carrying a WHY, a G12 scope, a review date, a declared action and the policy engine's answer. |
+| b | Only a person ratifies, revisits or retires an entry. The AI may forge a proposed entry and write its sections; it has no way to promote one. |
+| c | What the rules refuse cannot be ratified. Allowing it means changing the rule by ratification, never through the Library. |
+| d | Nothing is open-ended: every entry has an end date and a review date, and a loop also needs a cadence and an exit. |
+| e | The registry is append-only. `code/library.js`, `code/test-library.js` and `mods/governed-library/` are the reference implementation. |
+
+No rule in `code/rules/general.json` changes. No answer key changes.
+
 ## Release decisions
 - Rules, engine, Ledger writer and sheets are public. The scenarios file with answer keys stays private.
 - Code: Apache License 2.0. Documents and sheets: CC BY 4.0.
@@ -65,6 +77,12 @@ Date: 2026-10-03
 
 ```
 Decision: RAT-013 (Handshake, Understanding Review, understanding.js).
+Signed by: __SIGN_HERE__
+Date: __SIGN_HERE__
+```
+
+```
+Decision: RAT-014 (Library: designs, skills, loops, tools; library.js; governed-library mod).
 Signed by: __SIGN_HERE__
 Date: __SIGN_HERE__
 ```

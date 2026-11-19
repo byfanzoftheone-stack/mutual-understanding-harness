@@ -52,3 +52,5 @@ Types: `decision` · `run` · `mistake` · `unfinished` · `clarification` · `r
 | 2026-10-03 | decision | maintainer | Public code/ledger.js default folder changed to ledger/decisions.jsonl (was Warehouse/ledger) | code/ledger.js | folder name only; no address or key was ever in it |
 | 2026-10-12 | decision | Claude (Claude Code session) | Drafted HANDSHAKE.md, UNDERSTANDING-REVIEW.md, code/understanding.js and code/test-understanding.js as RAT-013 | proposed | not in force until a person signs RAT-013; adds U9 |
 | 2026-10-12 | unfinished | maintainer + Claude | U9: RAT-013 awaiting human signature. The Ledger read in UNDERSTANDING-REVIEW.md (M3–M8) is a reading of past entries, not a ratification. | open | see RATIFICATION.md |
+| 2026-11-19 | decision | Claude (Claude Code session) | Drafted LIBRARY.md, code/library.js, code/test-library.js and mods/governed-library/ as RAT-014 | proposed | not in force until a person signs RAT-014 |
+| 2026-11-19 | unfinished | maintainer + Claude | U10: RAT-014 awaiting human signature. Kinds for morph and ninja need detail from the maintainer. Loops are governed but not run (no scheduler). | open | see LIBRARY.md |
