@@ -70,6 +70,8 @@ Not in force until signed. If it is not signed, nothing below applies.
 
 No rule in `code/rules/general.json` changes. No answer key changes.
 
+**Approval stated in chat, 2026-11-19:** the maintainer wrote "approved for release on the rat 15". Recorded as given. It is not a signature: the block below still needs a name and a date, and a typed chat message is not a verified identity (M8). RAT-013 and RAT-014 are not covered by this approval and stay proposed.
+
 ## Release decisions
 - Rules, engine, Ledger writer and sheets are public. The scenarios file with answer keys stays private.
 - Code: Apache License 2.0. Documents and sheets: CC BY 4.0.
