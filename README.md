@@ -1,7 +1,7 @@
 # Mutual Understanding Harness — V1
 
 **Status: V1, updated with RAT-012 (2026-10-03). Ratified by the human signatures in `RATIFICATION.md`. Not production.**
-**RAT-013 (the Handshake and Understanding Review) and RAT-014 (the Library) are proposed and unsigned. They are not in force.**
+**RAT-013 (the Handshake and Understanding Review), RAT-014 (the Library) and RAT-015 (the repo finisher) are proposed and unsigned. They are not in force.**
 
 ## What this is
 An open test for how an AI decides when to **proceed**, **ask** a human, or **refuse**.
@@ -49,6 +49,7 @@ Rules (with reasons) → answer key → sheet → sealed room → answers → hu
 - `library.js` — *(proposed, RAT-014)* the Library: forge, ratify, revisit, retire, gate, list. The policy engine answers for every entry; only a person ratifies.
 - `test-library.js` — 53 checks, no private files.
 - `../mods/governed-library/` — *(proposed, RAT-014)* a Claude Code mod: tools for the AI (no tool ratifies), `/library` for a person, a guard on the record, a pane.
+- `../mods/repo-finisher/` — *(proposed, RAT-015)* a Claude Code mod: reads every file of a repo (read-only), proposes the work to make it production ready, builds only what a person approves, then waits for suggestions.
 - `rules/general.json` — the general rules, each with its reason.
 
 Scoring needs the private scenarios file, so only the maintainer scores.

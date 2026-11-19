@@ -1,0 +1,7 @@
+{
+  "name": "repo-finisher",
+  "version": "0.1.0",
+  "description": "Surveys every file of a repository (read-only), proposes the work to make it production ready, builds only what a person approves, then waits for suggestions.",
+  "license": "Apache-2.0",
+  "author": { "name": "Mutual Understanding Harness maintainers" }
+}

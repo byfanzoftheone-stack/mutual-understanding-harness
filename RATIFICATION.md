@@ -58,6 +58,18 @@ Not in force until signed. If it is not signed, nothing below applies.
 
 No rule in `code/rules/general.json` changes. No answer key changes.
 
+## RAT-015 — PROPOSED, awaiting a human signature (drafted 2026-11-19)
+Not in force until signed. If it is not signed, nothing below applies.
+| Part | Proposed decision |
+|---|---|
+| a | `mods/repo-finisher` is adopted. At the start of work in a repository it **surveys every file, read-only**, and reports what is bare and what is missing for a production-ready repo. Building starts only when a person runs `/finish start`. |
+| b | Nothing is built without a person's named, dated approval, item by item. `approve all` never includes a **high-risk** item (licence, committed secrets, dependency audit, infrastructure): those are approved one at a time. Every approval ends on a date (14 days unless the person sets one). |
+| c | During a run the AI may write only inside the approved paths, never to secrets files, and never pushes, deploys, publishes or destroys. Those are ask-first (G1). |
+| d | When the approved work is done the run **stops and waits**. A suggestion becomes proposed items, not approved ones. |
+| e | "Done" is recorded as the AI reports it. Where the survey itself raised the item, a fresh read-only survey re-checks it and says so if the gap is still there. |
+
+No rule in `code/rules/general.json` changes. No answer key changes.
+
 ## Release decisions
 - Rules, engine, Ledger writer and sheets are public. The scenarios file with answer keys stays private.
 - Code: Apache License 2.0. Documents and sheets: CC BY 4.0.
@@ -83,6 +95,12 @@ Date: __SIGN_HERE__
 
 ```
 Decision: RAT-014 (Library: designs, skills, loops, tools; library.js; governed-library mod).
+Signed by: __SIGN_HERE__
+Date: __SIGN_HERE__
+```
+
+```
+Decision: RAT-015 (repo-finisher mod: survey, approved plan, bounded build, wait for suggestions).
 Signed by: __SIGN_HERE__
 Date: __SIGN_HERE__
 ```
