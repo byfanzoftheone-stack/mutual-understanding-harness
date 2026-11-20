@@ -7,7 +7,7 @@ function buildRequest(tier, email) {
   if (!t || !t.price_env) throw new Error('tier not purchasable: ' + tier);
   const price = process.env[t.price_env];
   if (!price) throw new Error(t.price_env + ' not set');
-  const body = { mode: 'subscription', 'line_items[0][price]': price, 'line_items[0][quantity]': '1',
+  const body = { mode: 'subscription', 'metadata[price_id]': price, 'line_items[0][price]': price, 'line_items[0][quantity]': '1',
     success_url: process.env.CHECKOUT_SUCCESS_URL || 'https://example.com/thanks', cancel_url: process.env.CHECKOUT_CANCEL_URL || 'https://example.com/pricing' };
   if (email) body.customer_email = email;
   return { url: 'https://api.stripe.com/v1/checkout/sessions', body };

@@ -23,3 +23,5 @@ Principle: software may prepare; a human decides anything that spends money, pub
 
 ## Change control
 Rule changes go through `RATIFICATION.md`. Pricing and public copy changes need owner sign-off recorded in a commit message or ledger entry.
+
+Key delivery after a paid webhook is an `outbound_message`: `code/commercial/deliveries.js deliver` refuses until a human has approved that exact key hash via `guardrails.js approve`. No code path emails customers or calls Stripe.

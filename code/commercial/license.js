@@ -13,6 +13,10 @@ function issue(tier, expiry) { // owner-only tool; expiry = YYYYMMDD
 function verify(key, now = new Date()) {
   const free = reason => ({ valid: false, tier: 'community', reason });
   if (!key) return free('no key');
+  if (String(key).startsWith('FZ-')) { // key issued by the shared Stripe webhook module (hash-checked in its store; revocable)
+    const r = require('./webhook').validateKey(String(key));
+    return r.valid ? { valid: true, tier: r.tier, reason: 'ok (webhook key)' } : free('unknown or revoked webhook key');
+  }
   const [p, tier, exp, s] = String(key).split('.');
   if (p !== 'muh' || !pricing.tiers[tier] || !/^\d{8}$/.test(exp || '') || !s) return free('malformed');
   let want; try { want = sig(tier, exp); } catch (e) { return free(e.message); }

@@ -37,3 +37,11 @@ The Mutual Understanding Harness is an open test and policy engine for how an AI
 - [ ] Run the tests and `scan-secrets.js` before each release.
 
 Note: because the code is Apache-2.0, the license-key gate is a convenience and support entitlement, not DRM. The durable moat is the private scenarios, scoring, reports and support.
+
+## Stripe webhook -> license issuance (code/commercial/)
+- `webhook.js` exports `handleStripeWebhook(rawBuffer, signatureHeader)` -> `{status, body}`, wrapping the vendored shared module `license-webhook.mjs` (verbatim copy; re-copy to update). `webhook-server.example.js` is a zero-dependency `node:http` example that is never started automatically; it must be given the RAW body.
+- Price -> tier map comes from the env vars named in `pricing.json` (`STRIPE_PRICE_PRO`, `STRIPE_PRICE_ORG`). Tier is never taken from client metadata; unknown prices issue nothing. `checkout.js` sets `metadata[price_id]` on the Checkout Session request.
+- A paid `checkout.session.completed` stores only the sha256 of an `FZ-<TIER>-...` key in `LICENSE_DB` and queues the plaintext in an outbox. Replays (same event id) issue nothing; subscription deletion, payment failure and refund revoke.
+- `license.verify` accepts both HMAC `muh.*` keys and `FZ-*` keys (the latter checked against the store, so revocable). Webhook keys have no expiry; revocation is the control.
+- Delivery (owner, manual, nothing is sent by code): `node code/commercial/deliveries.js list | request <hash> | show <hash> | deliver <hash> <approver>`. Delivery is an `outbound_message`, so `request` queues an approval and a human must run `guardrails.js approve <id> <name>` before `deliver` will drop the plaintext.
+- Limits: JsonStore is single-process, file-based (use persistent storage; losing the file loses outbox and revocations); not tested against live Stripe, only locally signed payloads; `MUH_LICENSE_KEY` and `LICENSE_DB` must be present where the gate runs.
