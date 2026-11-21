@@ -9,12 +9,13 @@ function issue(tier, expiry) { // owner-only tool; expiry = YYYYMMDD
   if (!/^\d{8}$/.test(expiry)) throw new Error('expiry must be YYYYMMDD');
   return `muh.${tier}.${expiry}.${sig(tier, expiry)}`;
 }
-// Returns { valid, tier, reason }. No key, or a bad one, falls back to community (free) - never throws on user input.
-function verify(key, now = new Date()) {
+// ASYNC. Returns { valid, tier, reason }. No key, or a bad one, falls back to community (free) - never throws on user input.
+// HMAC (muh.*) keys are checked first and need no store. FZ-* keys need the async license store; if it is not configured they are DENIED (fail closed).
+async function verify(key, now = new Date()) {
   const free = reason => ({ valid: false, tier: 'community', reason });
   if (!key) return free('no key');
   if (String(key).startsWith('FZ-')) { // key issued by the shared Stripe webhook module (hash-checked in its store; revocable)
-    const r = require('./webhook').validateKey(String(key));
+    const r = await require('./webhook').validateKey(String(key));
     return r.valid ? { valid: true, tier: r.tier, reason: 'ok (webhook key)' } : free('unknown or revoked webhook key');
   }
   const [p, tier, exp, s] = String(key).split('.');

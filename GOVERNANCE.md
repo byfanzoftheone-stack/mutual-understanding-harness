@@ -19,7 +19,7 @@ Principle: software may prepare; a human decides anything that spends money, pub
 - Approval is enforced in the code paths provided. An agent with shell access to the same machine could run the approve command; run agents without that access, or approve from a separate account.
 - Rate limiter is in-process memory; use a shared store for multi-instance deployments.
 - The ledger is a local file; protect and back it up. It is not tamper-evident yet.
-- No webhook signature verification or license revocation exists yet.
+- Webhook signature verification and revocation exist (`code/commercial/webhook.js`), backed by a transactional store; they fail closed (503 / deny) when no store is configured. Not tested against live Stripe.
 
 ## Change control
 Rule changes go through `RATIFICATION.md`. Pricing and public copy changes need owner sign-off recorded in a commit message or ledger entry.

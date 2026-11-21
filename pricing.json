@@ -5,5 +5,6 @@
     "community": { "name": "Community", "price_month": 0,    "price_env": null,                  "rate_limit_per_min": 30,  "features": ["engine", "ledger", "general rules", "sheets"] },
     "pro":       { "name": "Pro",       "price_month": 49,   "price_env": "STRIPE_PRICE_PRO",    "rate_limit_per_min": 300, "features": ["custom rules file", "ledger export", "approval queue", "email support"] },
     "org":       { "name": "Org",       "price_month": 299,  "price_env": "STRIPE_PRICE_ORG",    "rate_limit_per_min": 3000,"features": ["everything in Pro", "scored runs by maintainer", "private scenario packs", "priority support"] }
-  }
+  },
+  "license_store_env": { "_note": "Webhook license store, chosen by env; fail closed if none set. See MONETIZATION.md.", "postgres": "LICENSE_DATABASE_URL", "sqlite": "LICENSE_DB", "recommended": "postgres on serverless/multi-instance; sqlite on one server with a persistent disk" }
 }

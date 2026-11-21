@@ -5,12 +5,12 @@ process.env.LICENSE_SIGNING_SECRET = 'test-secret-not-real';
 process.env.STRIPE_PRICE_PRO = 'price_placeholder'; delete process.env.STRIPE_SECRET_KEY;
 const lic = require('./license'), g = require('./guardrails'), co = require('./checkout');
 
-test('license: issue/verify, tamper, expiry, none', () => {
+test('license: issue/verify, tamper, expiry, none', async () => {
   const k = lic.issue('pro', '20991231');
-  assert.deepStrictEqual(lic.verify(k).tier, 'pro');
-  assert.strictEqual(lic.verify(k.replace('pro', 'org')).valid, false);
-  assert.strictEqual(lic.verify(lic.issue('pro', '20200101')).reason, 'expired');
-  assert.strictEqual(lic.verify(undefined).tier, 'community');
+  assert.deepStrictEqual((await lic.verify(k)).tier, 'pro');
+  assert.strictEqual((await lic.verify(k.replace('pro', 'org'))).valid, false);
+  assert.strictEqual((await lic.verify(lic.issue('pro', '20200101'))).reason, 'expired');
+  assert.strictEqual((await lic.verify(undefined)).tier, 'community');
 });
 test('approval: blocked until a human approves, single use, payload bound', () => {
   const p = { amount: 5 };

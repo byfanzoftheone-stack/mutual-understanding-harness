@@ -1,4 +1,3 @@
-// VENDORED verbatim from the-one-foundation/packages/license-webhook/index.mjs. Do not edit here; re-copy to update.
 // license-webhook: verified Stripe webhook -> license key issuance.
 // Zero dependencies. Never sends email or calls Stripe; it only verifies,
 // records, and queues keys for a human-approved delivery step.

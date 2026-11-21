@@ -7,8 +7,8 @@ function createServer() {
     if (req.method !== 'POST' || req.url !== '/api/stripe/webhook') { res.writeHead(404).end(); return; }
     const chunks = []; let size = 0;
     req.on('data', c => { size += c.length; if (size > 1e6) { res.writeHead(413).end(); req.destroy(); } else chunks.push(c); });
-    req.on('end', () => {
-      const out = handleStripeWebhook(Buffer.concat(chunks), req.headers['stripe-signature']); // raw bytes, never JSON.parse first
+    req.on('end', async () => {
+      const out = await handleStripeWebhook(Buffer.concat(chunks), req.headers['stripe-signature']); // raw bytes, never JSON.parse first
       res.writeHead(out.status, { 'Content-Type': 'application/json' }).end(JSON.stringify(out.body));
     });
   });
